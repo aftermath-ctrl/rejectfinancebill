@@ -1,0 +1,135 @@
+<!-- templates/home.html -->
+{% extends '_base.html' %}
+
+
+
+{% block title %}Home{% endblock title %}
+
+
+{% block content %}
+
+
+
+  <ul class="navbar-nav me-auto mb-2 mb-md-0">
+  
+
+
+ <h1 class="text-center my-5" >WE THE PEOPLE</h1>
+
+<div class="container">
+  <h1 class="text-center my-5">FinanceBill 2024 Registration Guidelines</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h2 class="card-title">1. MP Voted No Required:</h2>
+          <p class="card-text">To sign up, ensure your Member of Parliament (MP) has voted NO to the FinanceBill 2024. Verify their affirmative vote before proceeding with your registration.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h2 class="card-title">2. Amplify Awareness:</h2>
+          <p class="card-text">Mobilize your network by sharing this registration opportunity and the cause behind it. Harness the power of social media, word of mouth, and other communication tools to boost public knowledge and participation.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h2 class="card-title">3. Unity in Action:</h2>
+          <p class="card-text">Embrace the spirit of "We the People" by prioritizing the collective interests and well-being of your community. Foster unity and collaboration through your actions and decisions as part of this initiative.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h1 class="text-center my-5">Documenting Malpractices and Support Guidelines</h1>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h2 class="card-title">1. Documenting Malpractices and Support:</h2>
+          <p>
+            <strong>Identify and document:</strong> Instances of corruption, arrogance, or disregard for the law by officials or individuals involved in the FinanceBill 2024 process. Collect evidence such as testimonies, photos, videos, or documents to support these claims.
+            <label class="btn btn-success ms-2">
+              Upload Evidence
+              <input type="file" hidden>
+            </label>
+          </p>
+          <p>
+            <strong>Document police brutality:</strong> Record any instances of excessive force or violence by law enforcement during protests or gatherings related to the FinanceBill 2024 movement.
+            <label class="btn btn-success ms-2">
+              Upload Evidence
+              <input type="file" hidden>
+            </label>
+          </p>
+          <p>
+            <strong>Recognize and appreciate:</strong> The good, kind people and businesses that have stood with the protest. Gather their stories, testimonies, and contributions to highlight their positive impact on the movement.
+            <label class="btn btn-success ms-2">
+              Upload Testimony
+              <input type="file" hidden>
+            </label>
+          </p>
+          <p>
+            <strong>Good cops who stood with the people:</strong> If you know of any law enforcement officers who upheld their duty to protect and serve the people during the protests, share their stories and appreciate their efforts.
+            <a href="#" class="btn btn-primary ms-2">Share Good Cop Story</a>
+            <label class="btn btn-success ms-2">
+              Upload Evidence
+              <input type="file" hidden>
+            </label>
+          </p>
+          <p>
+            <strong>Ensure accuracy and responsibility:</strong> Ensure that all documentation is accurate, unbiased, and respectful of privacy and legal rights. Store and manage this information securely and responsibly.
+          </p>
+          <p>
+            <strong>Share stories and evidence:</strong> Share these stories and evidence through appropriate channels, such as social media, blogs, news outlets, or community events, to raise awareness and promote transparency and accountability.
+          </p>
+          <p>
+            <strong>Collaborate for impact:</strong> Collaborate with other organizations or individuals who share the same goals to amplify the impact of your efforts.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'account_login' %}">Log In</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+
+
+
+  <h1>Recall List</h1>
+  <ul>
+    {% for obj in recall_list %}
+      <li>{{ obj.name }} ({{ obj.constituency }})</li>
+    {% empty %}
+      <li>No records found.</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'upload_pdf' %}">Upload PDF</a>
+
+
+
+</ul>
+
+{% for recall in object_list %}
+<div>
+<h2><a href="">{{ recall.name }}</a></h2>
+</div>
+{% endfor %}
+
+
+{% endblock content %}

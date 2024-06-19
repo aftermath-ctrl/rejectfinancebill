@@ -1,0 +1,54 @@
+version: "3.9"
+   
+services:
+
+  db:
+    image: postgres:16.3
+
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=r3j3ctf!nanc3bill
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=dbmasteruser
+
+      
+  web:
+    build: .
+    #command: gunicorn afmplacefinale.wsgi -b 0.0.0.0:8000
+    command: python3 /rejectfinancebill/manage.py runserver 0.0.0.0:8000
+
+    environment:
+      - ENVIRONMENT=development
+      - DEBUG=1
+      
+
+    volumes:
+      - .:/rejectfinancebill
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      #- redis
+      
+
+    restart: always
+
+  #frontend:
+    #build:
+     # context: ./frontend
+
+      #dockerfile: Dockerfile
+    #command: npm start
+    #ports:
+      #- "3000:3000"
+
+   # depends_on:
+
+     # - web
+
+    #volumes:
+     # - ./frontend:/frontend
+
+volumes:
+  db:
